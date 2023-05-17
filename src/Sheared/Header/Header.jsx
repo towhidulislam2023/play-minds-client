@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+    const user=1
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -9,41 +11,58 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Item 1</a></li>
-                        <li tabIndex={0}>
-                            <a className="justify-between">
-                                Parent
-                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-                            </a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Item 3</a></li>
+                        <li><Link to={"/"}>Home</Link></li>
+                        <li><Link to={"/"}>All Toys</Link></li>
+
+                        <li><Link to={"/"}>Blogs</Link></li>
+                        <div className="divider lg:divider-horizontal"></div>
+                        {
+                            user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip="hello">
+                                <div className="avatar placeholder">
+                                    <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                        <span>MX</span>
+                                    </div>
+                                </div>
+                            </div>
+                                <li><Link to={"/"}>My Toys</Link></li>
+                                <li><Link to={"/"}>Add A Toy</Link></li>
+                            </div>
+
+                                : <li><Link className='btn btn-error' to={"/"}>Login</Link></li>
+                        }
+
                     </ul>
                 </div>
                 <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0"/>
-                <a className=" hidden md:inline-block text-3xl font-bold text-black">Playminds</a>
+                <a className=" hidden md:inline-block text-3xl font-bold text-black">Playminds Hub</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Item 1</a></li>
-                    <li tabIndex={0}>
-                        <a>
-                            Parent
-                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                        </a>
-                        <ul className="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
+                    <li><Link to={"/"}>Home</Link></li>
+                    <li><Link to={"/"}>All Toys</Link></li>
+                   
+                    <li><Link to={"/"}>Blogs</Link></li>
+                    <div className="divider lg:divider-horizontal"></div> 
+                    {
+                        user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip="hello">
+                            <div className="avatar placeholder">
+                                <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                                    <span>MX</span>
+                                </div>
+                            </div>
+                        </div> 
+                            <li><Link to={"/"}>My Toys</Link></li>
+                            <li><Link to={"/"}>Add A Toy</Link></li>
+                        </div>
+                        
+                        : <li><Link className=' btn-error' to={"/"}>Login</Link></li>
+                    }
+                   
+                   
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Get started</a>
+                <Link className='btn btn-warning'>Learn More</Link>
             </div>
         </div>
     );
