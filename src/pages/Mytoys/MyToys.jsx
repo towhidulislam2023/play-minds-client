@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthProviderContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const MyToys = () => {
+    useTitle("My-toys")
     const { user } = useContext(AuthProviderContext)
     const [mytoys, setMytoys] = useState([])
 
@@ -53,7 +55,9 @@ const MyToys = () => {
 
     }
     return (
-        <div>
+        <div className='my-10'>
+            <h1 className="text-2xl font-extrabold ">My Added Toys</h1>
+            <div className="divider"></div>
             <div className="overflow-x-auto w-full my-10">
                 <table className="table w-full my-10 table-normal">
                     {/* head */}

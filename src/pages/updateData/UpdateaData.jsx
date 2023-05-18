@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthProviderContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const UpdateaData = () => {
+    useTitle("Update Data")
     const {user}=useContext(AuthProviderContext)
     const loaderData= useLoaderData()
     // const { pictureURL,

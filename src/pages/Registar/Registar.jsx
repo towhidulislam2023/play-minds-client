@@ -28,6 +28,7 @@ const Registar = () => {
                 console.log(resulr.user);
                 setError("")
                 updateUserinfo(name, url)
+                form.reset()
                 navigate(from, { replace: true })
             })
             .catch(error => {
