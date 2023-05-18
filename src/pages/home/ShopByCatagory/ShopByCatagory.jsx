@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { FaStar } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthProviderContext } from '../../../provider/AuthProvider';
@@ -10,7 +10,6 @@ import useTitle from '../../../hooks/useTitle';
 const ShopByCategory = () => {
     useTitle("view-details")
     const {user}=useContext(AuthProviderContext)
-    const navigate=useNavigate()
     const [selectedIndex, setSelectedIndex] = useState('Science Toys');
     const [catagoryData, setCatagoryData] = useState([]);
 

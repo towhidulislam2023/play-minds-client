@@ -8,15 +8,6 @@ const UpdateaData = () => {
     useTitle("Update Data")
     const {user}=useContext(AuthProviderContext)
     const loaderData= useLoaderData()
-    // const { pictureURL,
-    //     name,
-    //     sellerName,
-    //     sellerEmail,
-    //     price,
-    //     rating,
-    //     availableQuantity,
-    //     subcategory,
-    //     description, }=loaderData
     const handleupdateToy=(event)=>{
         event.preventDefault();
         const form = event.target;

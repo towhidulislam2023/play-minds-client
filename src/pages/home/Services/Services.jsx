@@ -11,7 +11,7 @@ const Services = () => {
     return (
         <div
             data-aos="slide-right"
-            data-aos-delay="400" //Here you can use any of the AOS animations
+            data-aos-delay="400" 
         >
             <div className='my-10'>
                 <h3 className="font-bold text-4xl">Our Services <span className='text-warning'>.</span></h3>
