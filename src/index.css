@@ -9,3 +9,10 @@
     background-position: center;
     
 }
+.detbginlogin{
+    /* height: 100vh; */
+    background:url(./assets/bannar/login.jpg);
+        background-size: cover;
+        background-position: center;
+
+}

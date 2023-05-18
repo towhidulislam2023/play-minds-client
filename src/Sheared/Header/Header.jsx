@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const user=1
+    const user=0
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -28,7 +28,7 @@ const Header = () => {
                                 <li><Link to={"/"}>Add A Toy</Link></li>
                             </div>
 
-                                : <li><Link className='btn btn-error' to={"/"}>Login</Link></li>
+                                : <li><Link className='btn btn-error' to={"/login"}>Login</Link></li>
                         }
 
                     </ul>
@@ -55,7 +55,10 @@ const Header = () => {
                             <li><Link to={"/"}>Add A Toy</Link></li>
                         </div>
                         
-                        : <li><Link className=' btn-error' to={"/"}>Login</Link></li>
+                        : <Link to={"/login"}>
+                            
+                            <button className='btn btn-error'>Login</button>
+                        </Link>
                     }
                    
                    
