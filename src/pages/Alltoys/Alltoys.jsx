@@ -23,12 +23,12 @@ const Alltoys = () => {
     }
     return (
         <div>
-            <div className=' my-10 flex justify-center gap-10'>
-                <div className="form-control w-full max-w-xs ">
+            <div className=' my-10 flex justify-center items-center flex-col md:flex-row gap-10'>
+                <div className="form-control w-full  max-w-xs ">
                     <label className="label">
                         <span className="label-text">Sory Product By Price</span>
                     </label>
-                    <select onChange={handelOnChange} className="select select-bordered">
+                    <select onChange={handelOnChange} className="select select-bordered ">
                         <option defaultValue={"ascending"}>Lower Price To Upper Price</option>
                         <option value={"descending"}>Upper Price to Lower Price</option>
                     </select>
