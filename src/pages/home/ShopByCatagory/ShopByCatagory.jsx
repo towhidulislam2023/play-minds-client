@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const ShopByCategory = () => {
     const [selectedIndex, setSelectedIndex] = useState('Science Toys');
     const [catagoryData, setCatagoryData] = useState([]);
 
     useEffect(() => {
         if (selectedIndex) {
-            fetch(`http://localhost:5000/toys?subcategory=${selectedIndex}`)
+            fetch(`https://play-minds-server.vercel.app/toys?subcategory=${selectedIndex}`)
                 .then((res) => res.json())
                 .then((data) => setCatagoryData(data))
                 .catch((error) => console.log(error));
@@ -45,7 +46,8 @@ const ShopByCategory = () => {
                                             <p>Price:  ${catagory.price}</p>
                                             <p className='flex items-center gap-5'> <FaStar className='text-warning text-xl'></FaStar> <span className='text-xl'>{catagory.rating}</span></p>
                                             <div className="card-actions justify-end">
-                                                <button className="btn btn-warning">View Details</button>
+                                                <Link to={`viewProductDetails/${catagory._id}`}> <button className="btn btn-warning">View Details</button></Link>
+                                               
                                             </div>
                                         </div>
                                     </div>

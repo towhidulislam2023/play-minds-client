@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import GoogleGit from './GoogleGit';
 import { AuthProviderContext } from '../../provider/AuthProvider';
@@ -7,6 +7,10 @@ import { AuthProviderContext } from '../../provider/AuthProvider';
 const Login = () => {
     const { user, logInuser } = useContext(AuthProviderContext)
     useTitle("Login")
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.pathname || "/"
+    const [error,setError]=useState("")
     const handelLoginform = (event) => {
         event.preventDefault()
         const form = event.target
@@ -16,9 +20,12 @@ const Login = () => {
         logInuser(email, passsword)
             .then(result => {
                 console.log(result.user);
+                setError("")
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
+                setError(error.message)
             })
 
     }
@@ -27,6 +34,7 @@ const Login = () => {
             <div className='mx-32 md:w-[40%] py-32  px-5'>
                 <div className='border border-black px-9 py-2 rounded-md border-opacity-60'>
                     <h5 className='text-2xl mt-2 font-bold'>Login </h5>
+                    <p className='text-error font-semibold my-3'>{error}</p>
                     <form onSubmit={handelLoginform} className='my-12'>
                         <input className='border-l-none border-b-2 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black' type="email" required name='email' placeholder='Username or Email' />
                         <input className='border-l-none border-b-2 mt-10  rounded-md px-5  border-black border-opacity-5 py-3 outline-none w-full text-black' type="password" required name='password' placeholder='Passowrd' />

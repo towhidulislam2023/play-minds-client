@@ -25,7 +25,9 @@ const Header = () => {
                             user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
                                 <div className="avatar placeholder">
                                     <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-                                        <span>MX</span>
+                                        <div className="w-24 rounded-full">
+                                            <img src={user ? user.photoURL :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9Prvq8v6QqrdmLk_5w4PK3NcujPmDSZ9Kfe_SZdNdQ&s"} />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +42,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0"/>
-                <a className=" hidden md:inline-block text-3xl font-bold text-black">Playminds Hub</a>
+                <Link to={"/"} className=" hidden md:inline-block text-3xl font-bold text-black">Playminds</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -50,10 +52,12 @@ const Header = () => {
                     <li><Link to={"/"}>Blogs</Link></li>
                     <div className="divider lg:divider-horizontal"></div> 
                     {
-                        user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.email}`}>
+                        user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>
                             <div className="avatar placeholder">
                                 <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-                                    <span>MX</span>
+                                    <div className="w-24 rounded-full">
+                                        <img src={user ? user.photoURL : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9Prvq8v6QqrdmLk_5w4PK3NcujPmDSZ9Kfe_SZdNdQ&s"} />
+                                    </div>
                                 </div>
                             </div>
                         </div> 

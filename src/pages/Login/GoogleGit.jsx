@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
+import { AuthProviderContext } from '../../provider/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const GoogleGit = () => {
-    const handelLoginByGoogle=()=>{
-        
+    const { handelGoogleLogin }=useContext(AuthProviderContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.pathname || "/"
+    const handelLoginByGoogle = () => {
+        handelGoogleLogin()
+            .then(result => {
+                console.log(result.user);
+                navigate(from, { replace: true })
+
+            })
+            .catch(error => { console.error(error) })
 
     }
     return (
