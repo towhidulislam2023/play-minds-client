@@ -13,7 +13,7 @@ console.log(price,typeof price);
             <p className='my-2 badge badge-warning mt-5 py-1'>{subcategory}</p>
             <div className="divider"></div>
             <div className='flex gap-32 flex-col md:flex-row'>
-                <img className='w-96' src={pictureURL} alt="" />
+                <img className='w-96 mx-auto' src={pictureURL} alt="" />
                 <div className="divider lg:divider-horizontal"></div>
                 <div className='space-y-6 px-5'>
                     <h1 className='text-xl  '>Name: <span className='font-semibold'>{name}</span></h1>

@@ -43,7 +43,7 @@ const Header = () => {
                                 <li><NavLink className={({ isActive }) =>
                                     isActive ? "underline text-error" : ""
                                 }
-                                    to={"/mytoys"}>My Toyssss</NavLink></li>
+                                    to={"/mytoys"}>My Toys</NavLink></li>
                                 <li><NavLink className={({ isActive }) =>
                                     isActive ? "underline text-error" : ""
                                 }
