@@ -10,6 +10,7 @@ import AddToy from "../pages/AddToy/AddToy";
 import MyToys from "../pages/Mytoys/MyToys";
 import UpdateaData from "../pages/updateData/UpdateaData";
 import ErrorPage from "../Sheared/ErrorPage/ErrorPage";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`),
                 errorElement: <ErrorPage></ErrorPage>,
             },
+            {
+                path:"/blog",
+                element:<Blog></Blog>
+            }
            
         ]
     },

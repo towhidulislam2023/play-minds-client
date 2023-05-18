@@ -11,7 +11,7 @@ const MyToys = () => {
         if (!user) {
             return
         }
-        fetch(`http://localhost:5000/myAddedtoys?email=${user?.email}`)
+        fetch(`https://play-minds-server.vercel.app/myAddedtoys?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMytoys(data))
     }, [user])
@@ -27,7 +27,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/dellettoy/${id}`, {
+                fetch(`https://play-minds-server.vercel.app/dellettoy/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -54,7 +54,7 @@ const MyToys = () => {
     }
     return (
         <div>
-            <table className="table w-full">
+            <table className="table w-full my-10">
                 {/* head */}
                 <thead>
                     <tr>

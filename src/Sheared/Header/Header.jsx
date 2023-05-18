@@ -28,7 +28,7 @@ const Header = () => {
                         <li><NavLink className={({ isActive }) =>
                             isActive ? "underline text-error" : ""
                         }
-                            to={"/"}>Blogs</NavLink></li>
+                            to={"/blog"}>Blogs</NavLink></li>
                         <div className="divider lg:divider-horizontal"></div>
                         {
                             user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
@@ -74,7 +74,7 @@ const Header = () => {
                             isActive ? "underline text-error" : ""
                         }
 
-                        to={"/"}>Blogs</NavLink></li>
+                        to={"/blog"}>Blogs</NavLink></li>
                     <div className="divider lg:divider-horizontal"></div>
                     {
                         user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>

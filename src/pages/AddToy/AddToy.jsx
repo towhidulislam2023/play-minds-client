@@ -31,7 +31,7 @@ const AddToy = () => {
             description,
         }
         console.log(newtoy);
-        fetch("http://localhost:5000/newPost", {
+        fetch("https://play-minds-server.vercel.app/newPost", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
