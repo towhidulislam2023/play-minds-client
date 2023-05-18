@@ -10,6 +10,13 @@ const Footer = () => {
                 <img className='w-32' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="" />
                 <p>Playminds Hub
                         <br />Delivering Unmatched Quality in Educational Toys Since 2020.</p>
+                        Address :
+                    <p>House Number: 123
+                        ,Street: Elm Street
+                        City: Anytown <br />
+                        State: Example State
+                        Postal Code: 12345
+                        Country: Exampleland</p>
             </div>
             <div>
                 <span className="footer-title">Social</span>

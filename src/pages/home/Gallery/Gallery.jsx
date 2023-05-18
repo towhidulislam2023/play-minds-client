@@ -5,14 +5,14 @@ const Gallery = () => {
     const [imageData, setImageData] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/gallery")
+        fetch("https://play-minds-server.vercel.app/gallery")
             .then(res => res.json())
             .then(data => setImageData(data))
     }, [])
     useEffect(() => {
         AOS.init();
     }, [])
-    console.log(imageData);
+    // console.log(imageData);
     return (
         <div className='my-12 px-5 md:px-0'>
             <h3 className="font-bold text-4xl">Our Gallery </h3>

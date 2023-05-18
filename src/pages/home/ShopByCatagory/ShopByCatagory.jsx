@@ -22,7 +22,7 @@ const ShopByCategory = () => {
                 .catch((error) => console.log(error));
         }
     }, [selectedIndex]);
-    console.log(catagoryData);
+    // console.log(catagoryData);
 
     const options = ['Science Toys', 'Language Toys', 'Math Toys'];
     const handelviewDetails=()=>{

@@ -10,10 +10,10 @@ console.log(price,typeof price);
             <h1 className="text-5xl  font-bold">{name}</h1>
             <p className='my-2 badge badge-warning mt-5 py-1'>{subcategory}</p>
             <div className="divider"></div>
-            <div className='flex gap-32'>
+            <div className='flex gap-32 flex-col md:flex-row'>
                 <img className='w-96' src={pictureURL} alt="" />
                 <div className="divider lg:divider-horizontal"></div>
-                <div className='space-y-6'>
+                <div className='space-y-6 px-5'>
                     <h1 className='text-xl  '>Name: <span className='font-semibold'>{name}</span></h1>
                     <h1 className='text-xl  '>Price: $<span className='font-semibold'>{price}</span></h1>
                     <h1 className='text-xl  '>Rating: <span className='font-semibold'>{rating}</span></h1>

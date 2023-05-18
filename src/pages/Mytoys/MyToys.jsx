@@ -1,20 +1,57 @@
 import React, { useContext, useEffect, useState } from 'react';
-import  { AuthProviderContext } from '../../provider/AuthProvider';
+import { AuthProviderContext } from '../../provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyToys = () => {
-    const{user}=useContext(AuthProviderContext)
-    const [mytoys,setMytoys]=useState([])
+    const { user } = useContext(AuthProviderContext)
+    const [mytoys, setMytoys] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!user) {
             return
         }
         fetch(`http://localhost:5000/myAddedtoys?email=${user?.email}`)
-        .then(res=>res.json())
+            .then(res => res.json())
             .then(data => setMytoys(data))
     }, [user])
-        
+    const handelDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/dellettoy/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const remainingdata = mytoys&&mytoys.filter(toy=>toy._id!==id)
+                            setMytoys(remainingdata)
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+
+                        }
+                    })
+
+
+
+
+            }
+        })
+
+
+    }
     return (
         <div>
             <table className="table w-full">
@@ -23,8 +60,9 @@ const MyToys = () => {
                     <tr>
                         <th>
                             <label>
-                                <input type="checkbox" className="checkbox" />
+                                <input type="checkbox" className="checkbox " />
                             </label>
+
                         </th>
                         <th>Toy Name and Info <br />Sub-category</th>
                         <th>Seller Information</th>
@@ -40,6 +78,9 @@ const MyToys = () => {
                             <th>
                                 <label>
                                     <input type="checkbox" className="checkbox" />
+                                    <button onClick={() => handelDelete(data._id)} className="btn ml-6 btn-circle btn-outline btn-warning">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                    </button>
                                 </label>
                             </th>
                             <td>

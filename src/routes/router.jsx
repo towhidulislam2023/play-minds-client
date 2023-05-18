@@ -9,19 +9,22 @@ import Alltoys from "../pages/Alltoys/Alltoys";
 import AddToy from "../pages/AddToy/AddToy";
 import MyToys from "../pages/Mytoys/MyToys";
 import UpdateaData from "../pages/updateData/UpdateaData";
+import ErrorPage from "../Sheared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout></Layout>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:"/",
-                element:<Home></Home>
+                element:<Home></Home>,
+                errorElement: <ErrorPage></ErrorPage>,
             },
             {
                 path:"/login",
-                element:<Login></Login>
+                element:<Login></Login>,
             },
             {
                 path:"/signup",
@@ -30,28 +33,37 @@ const router = createBrowserRouter([
             {
                 path:"/viewProductDetails/:id",
                 element: <PrivateRoute><ViewProductDetails></ViewProductDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`)
+                loader: ({params}) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`),
+                errorElement: <ErrorPage></ErrorPage>,
             },
             {
                 path: "/alltoys",
-                element: <Alltoys></Alltoys>
+                element: <Alltoys></Alltoys>,
+                errorElement: <ErrorPage></ErrorPage>,
             },
            
             {
                 path: "/addtoy",
-                element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
+                element: <PrivateRoute><AddToy></AddToy></PrivateRoute>,
+                errorElement: <ErrorPage></ErrorPage>,
             },
             {
                 path: "/mytoys",
-                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+                element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
+                errorElement: <ErrorPage></ErrorPage>,
             },
             {
                 path: "/updatetoys/:id",
                 element: <PrivateRoute><UpdateaData></UpdateaData></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`),
+                errorElement: <ErrorPage></ErrorPage>,
             },
            
         ]
     },
+    {
+        path:"/*",
+        element:<ErrorPage></ErrorPage>
+    }
 ]);
 export default router

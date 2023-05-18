@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthProviderContext } from '../../provider/AuthProvider';
 
 const Header = () => {
-    const { user, logout }=useContext(AuthProviderContext)
-    const handelLogout=()=>{
+    const { user, logout } = useContext(AuthProviderContext)
+    const handelLogout = () => {
         logout()
 
     }
@@ -19,23 +19,23 @@ const Header = () => {
                         <li><NavLink className={({ isActive }) =>
                             isActive ? "underline text-error" : ""
                         }
-                     to={"/"}>Home</NavLink></li>
+                            to={"/"}>Home</NavLink></li>
                         <li><NavLink className={({ isActive }) =>
                             isActive ? "underline text-error" : ""
                         }
-                     to={"/alltoys"}>All Toys</NavLink></li>
+                            to={"/alltoys"}>All Toys</NavLink></li>
 
                         <li><NavLink className={({ isActive }) =>
                             isActive ? "underline text-error" : ""
                         }
-                     to={"/"}>Blogs</NavLink></li>
+                            to={"/"}>Blogs</NavLink></li>
                         <div className="divider lg:divider-horizontal"></div>
                         {
                             user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
                                 <div className="avatar placeholder">
                                     <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
                                         <div className="w-24 rounded-full">
-                                            <img src={user ? user.photoURL :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9Prvq8v6QqrdmLk_5w4PK3NcujPmDSZ9Kfe_SZdNdQ&s"} />
+                                            <img src={user ? user.photoURL : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ9Prvq8v6QqrdmLk_5w4PK3NcujPmDSZ9Kfe_SZdNdQ&s"} />
                                         </div>
                                     </div>
                                 </div>
@@ -43,11 +43,11 @@ const Header = () => {
                                 <li><NavLink className={({ isActive }) =>
                                     isActive ? "underline text-error" : ""
                                 }
-                     to={"/mytoys"}>My Toyssss</NavLink></li>
+                                    to={"/mytoys"}>My Toyssss</NavLink></li>
                                 <li><NavLink className={({ isActive }) =>
                                     isActive ? "underline text-error" : ""
                                 }
-                     to={"/addtoy"}>Add A Toy</NavLink></li>
+                                    to={"/addtoy"}>Add A Toy</NavLink></li>
                                 <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                             </div>
 
@@ -56,7 +56,7 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0"/>
+                <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0" />
                 <Link to={"/"} className=" hidden md:inline-block text-3xl font-bold text-black">Playminds</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -64,18 +64,18 @@ const Header = () => {
                     <li><NavLink className={({ isActive }) =>
                         isActive ? "underline text-error" : ""
                     }
-                     to={"/"}>Home</NavLink></li>
+                        to={"/"}>Home</NavLink></li>
                     <li><NavLink className={({ isActive }) =>
                         isActive ? "underline text-error" : ""
                     }
-                     to={"/alltoys"}>All Toys</NavLink></li>
+                        to={"/alltoys"}>All Toys</NavLink></li>
                     <li><NavLink
-                        className={({ isActive}) =>
+                        className={({ isActive }) =>
                             isActive ? "underline text-error" : ""
                         }
-                    
-                    to={"/"}>Blogs</NavLink></li>
-                    <div className="divider lg:divider-horizontal"></div> 
+
+                        to={"/"}>Blogs</NavLink></li>
+                    <div className="divider lg:divider-horizontal"></div>
                     {
                         user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>
                             <div className="avatar placeholder">
@@ -85,25 +85,25 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                             <li><NavLink className={({ isActive }) =>
                                 isActive ? "underline text-error" : ""
                             }
-                     to={"/mytoys"}>My Toys</NavLink></li>
+                                to={"/mytoys"}>My Toys</NavLink></li>
                             <li><NavLink className={({ isActive }) =>
                                 isActive ? "underline text-error" : ""
                             }
-                     to={"/addtoy"}>Add A Toy</NavLink></li>
+                                to={"/addtoy"}>Add A Toy</NavLink></li>
                             <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                         </div>
-                        
-                        : <Link to={"/login"}>
-                            
-                            <button className='btn btn-error'>Login</button>
-                        </Link>
+
+                            : <Link to={"/login"}>
+
+                                <button className='btn btn-error'>Login</button>
+                            </Link>
                     }
-                   
-                   
+
+
                 </ul>
             </div>
             <div className="navbar-end">
