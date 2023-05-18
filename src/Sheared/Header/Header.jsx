@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthProviderContext } from '../../provider/AuthProvider';
 
 const Header = () => {
-    const user=0
+    const { user, logout }=useContext(AuthProviderContext)
+    const handelLogout=()=>{
+        logout()
+
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -17,15 +22,16 @@ const Header = () => {
                         <li><Link to={"/"}>Blogs</Link></li>
                         <div className="divider lg:divider-horizontal"></div>
                         {
-                            user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip="hello">
+                            user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
                                 <div className="avatar placeholder">
                                     <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
                                         <span>MX</span>
                                     </div>
                                 </div>
                             </div>
-                                <li><Link to={"/"}>My Toys</Link></li>
+                                <li><Link to={"/"}>My Toyssss</Link></li>
                                 <li><Link to={"/"}>Add A Toy</Link></li>
+                                <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                             </div>
 
                                 : <li><Link className='btn btn-error' to={"/login"}>Login</Link></li>
@@ -44,7 +50,7 @@ const Header = () => {
                     <li><Link to={"/"}>Blogs</Link></li>
                     <div className="divider lg:divider-horizontal"></div> 
                     {
-                        user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip="hello">
+                        user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.email}`}>
                             <div className="avatar placeholder">
                                 <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
                                     <span>MX</span>
@@ -53,6 +59,7 @@ const Header = () => {
                         </div> 
                             <li><Link to={"/"}>My Toys</Link></li>
                             <li><Link to={"/"}>Add A Toy</Link></li>
+                            <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                         </div>
                         
                         : <Link to={"/login"}>

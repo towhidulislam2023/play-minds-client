@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import { AuthProviderContext } from '../../provider/AuthProvider';
 
 const Registar = () => {
     useTitle("Signup")
-    const handelRegistarform=()=>{
+    const { signupuser }=useContext(AuthProviderContext)
+    const handelRegistarform = (event)=>{
+        event.preventDefault()
+        const form = event.target
+        const name = form.name.value
+        const email = form.email.value
+        const passsword = form.password.value
+        const ConfirmPasssword = form.ConfirmPassword.value
+        console.log(name, email, passsword, ConfirmPasssword);
+        signupuser(email,passsword)
+        .then(resulr=>{
+            console.log(resulr.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
 
     }
     return (
         <div className='detbginlogin mb-10 rounded-lg'>
             <div className='mx-32 md:w-[40%] py-32  px-5'>
                 <div className='border border-black px-9 py-2 rounded-md border-opacity-60'>
-                    <h5 className='text-2xl mt-2 font-bold'>Login</h5>
+                    <h5 className='text-2xl mt-2 font-bold'>Signup</h5>
                     <form onSubmit={handelRegistarform} className='my-12'>
                         <input className='border-l-none border-b-2 rounded-md px-5 border-black border-opacity-5 py-3 outline-none w-full text-black' type="name" required name='name' placeholder='Your Name' />
                         <input className='border-l-none border-b-2 rounded-md px-5 mt-10 border-black border-opacity-5 py-3 outline-none w-full text-black' type="email" required name='email' placeholder='Username or Email' />

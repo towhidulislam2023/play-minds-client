@@ -3,6 +3,7 @@ import { FaGoogle } from 'react-icons/fa';
 
 const GoogleGit = () => {
     const handelLoginByGoogle=()=>{
+        
 
     }
     return (
