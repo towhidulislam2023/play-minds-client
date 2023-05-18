@@ -8,6 +8,7 @@ import PrivateRoute from "./PrivateRoute";
 import Alltoys from "../pages/Alltoys/Alltoys";
 import AddToy from "../pages/AddToy/AddToy";
 import MyToys from "../pages/Mytoys/MyToys";
+import UpdateaData from "../pages/updateData/UpdateaData";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,11 @@ const router = createBrowserRouter([
             {
                 path: "/mytoys",
                 element: <PrivateRoute><MyToys></MyToys></PrivateRoute>
+            },
+            {
+                path: "/updatetoys/:id",
+                element: <PrivateRoute><UpdateaData></UpdateaData></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`)
             },
            
         ]

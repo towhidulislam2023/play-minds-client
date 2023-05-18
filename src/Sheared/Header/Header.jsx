@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthProviderContext } from '../../provider/AuthProvider';
 
 const Header = () => {
@@ -16,10 +16,19 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><Link to={"/"}>Home</Link></li>
-                        <li><Link to={"/alltoys"}>All Toys</Link></li>
+                        <li><NavLink className={({ isActive }) =>
+                            isActive ? "underline text-error" : ""
+                        }
+                     to={"/"}>Home</NavLink></li>
+                        <li><NavLink className={({ isActive }) =>
+                            isActive ? "underline text-error" : ""
+                        }
+                     to={"/alltoys"}>All Toys</NavLink></li>
 
-                        <li><Link to={"/"}>Blogs</Link></li>
+                        <li><NavLink className={({ isActive }) =>
+                            isActive ? "underline text-error" : ""
+                        }
+                     to={"/"}>Blogs</NavLink></li>
                         <div className="divider lg:divider-horizontal"></div>
                         {
                             user ? <div className='flex flex-col justify-center items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={user?.email}>
@@ -31,8 +40,14 @@ const Header = () => {
                                     </div>
                                 </div>
                             </div>
-                                <li><Link to={"/mytoys"}>My Toyssss</Link></li>
-                                <li><Link to={"/addtoy"}>Add A Toy</Link></li>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "underline text-error" : ""
+                                }
+                     to={"/mytoys"}>My Toyssss</NavLink></li>
+                                <li><NavLink className={({ isActive }) =>
+                                    isActive ? "underline text-error" : ""
+                                }
+                     to={"/addtoy"}>Add A Toy</NavLink></li>
                                 <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                             </div>
 
@@ -46,10 +61,20 @@ const Header = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><Link to={"/"}>Home</Link></li>
-                    <li><Link to={"/alltoys"}>All Toys</Link></li>
-                   
-                    <li><Link to={"/"}>Blogs</Link></li>
+                    <li><NavLink className={({ isActive }) =>
+                        isActive ? "underline text-error" : ""
+                    }
+                     to={"/"}>Home</NavLink></li>
+                    <li><NavLink className={({ isActive }) =>
+                        isActive ? "underline text-error" : ""
+                    }
+                     to={"/alltoys"}>All Toys</NavLink></li>
+                    <li><NavLink
+                        className={({ isActive}) =>
+                            isActive ? "underline text-error" : ""
+                        }
+                    
+                    to={"/"}>Blogs</NavLink></li>
                     <div className="divider lg:divider-horizontal"></div> 
                     {
                         user ? <div className='flex items-center gap-4'> <div className="tooltip tooltip-bottom" data-tip={`${user?.displayName}`}>
@@ -61,8 +86,14 @@ const Header = () => {
                                 </div>
                             </div>
                         </div> 
-                            <li><Link to={"/mytoys"}>My Toys</Link></li>
-                            <li><Link to={"/addtoy"}>Add A Toy</Link></li>
+                            <li><NavLink className={({ isActive }) =>
+                                isActive ? "underline text-error" : ""
+                            }
+                     to={"/mytoys"}>My Toys</NavLink></li>
+                            <li><NavLink className={({ isActive }) =>
+                                isActive ? "underline text-error" : ""
+                            }
+                     to={"/addtoy"}>Add A Toy</NavLink></li>
                             <button onClick={handelLogout} className='btn btn-success'>Logout</button>
                         </div>
                         
