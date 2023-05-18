@@ -60,7 +60,7 @@ const ShopByCategory = () => {
                                             <p>Price:  ${catagory.price}</p>
                                             <p className='flex items-center gap-5'> <FaStar className='text-warning text-xl'></FaStar> <span className='text-xl'>{catagory.rating}</span></p>
                                             <div className="card-actions justify-end">
-                                                <Link to={`viewProductDetails/${catagory._id}`}> <button onClick={handelviewDetails} className="btn btn-warning">View Details</button></Link>
+                                                <Link to={`/viewProductDetails/${catagory._id}`}> <button onClick={handelviewDetails} className="btn btn-warning">View Details</button></Link>
                                                
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@ const ShopByCategory = () => {
                     </TabPanel>
                 ))}
             </Tabs>
-            <ToastContainer />
+           
         </div>
     );
 };

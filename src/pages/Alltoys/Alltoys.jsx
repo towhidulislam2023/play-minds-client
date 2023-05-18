@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import useTitle from '../../hooks/useTitle';
+import { Link } from 'react-router-dom';
 
 const Alltoys = () => {
     useTitle("All Toys")
-    const [toysData,setToysData]=useState([])
+    const [toysData, setToysData] = useState([])
     const [sortValue, setSortValue] = useState("ascending")
     const [searchvalue, setSerchValue] = useState("")
-    useEffect(()=>{
+    useEffect(() => {
         fetch(`https://play-minds-server.vercel.app/alltoys?limit=20&sort=${sortValue}&title=${searchvalue}`)
-        .then(res=>res.json())
-        .then(data=>setToysData(data))
+            .then(res => res.json())
+            .then(data => setToysData(data))
     }, [sortValue, searchvalue])
     // console.log(toysData);
-    
-    const handelOnChange=(event)=>{
+
+    const handelOnChange = (event) => {
         setSortValue(event.target.value);
 
     }
-    const handelInputOnChange=(event)=>{
+    const handelInputOnChange = (event) => {
         setSerchValue(event.target.value);
     }
     return (
@@ -38,10 +39,9 @@ const Alltoys = () => {
                     </label>
                     <input onChange={handelInputOnChange} type="text" placeholder="Search Product " className="input input-bordered input-primary w-full  block max-w-xs" />
                 </div>
-               
-
             </div>
 
+                            {toysData.length === 0 ?"No Product Found":""}
             <div className="overflow-x-auto w-full my-10">
                 <table className="table w-full">
                     {/* head */}
@@ -60,7 +60,6 @@ const Alltoys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {toysData.length === 0 ? <p className='text-center text-4xl font-bold'>No Product Found</p>:""}
                         {/* row 1 */}
                         {
                             toysData && toysData.map(data => <tr key={data._id}>
@@ -71,11 +70,6 @@ const Alltoys = () => {
                                 </th>
                                 <td>
                                     <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={data.pictureURL} alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
                                         <div>
                                             <div className="font-bold">{data.name}</div>
                                             <div className="text-sm opacity-50">{data.subcategory}</div>
@@ -83,19 +77,19 @@ const Alltoys = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    <h2 className='text-xl'>{data.sellerName}</h2> 
+                                    <h2 className='text-xl'>{data.sellerName}</h2>
                                     <div>{data.sellerEmail}</div>
                                 </td>
                                 <td>{data.price}</td>
                                 <td>{data.availableQuantity}</td>
                                 <th>
-                                    <button className="btn btn-warning">View Details</button>
+                                    <Link to={`/viewProductDetails/${data._id}`}> <button className="btn btn-warning">View Details</button></Link>
                                 </th>
                             </tr>)
                         }
-                        
+
                     </tbody>
-                 
+
 
                 </table>
             </div>
