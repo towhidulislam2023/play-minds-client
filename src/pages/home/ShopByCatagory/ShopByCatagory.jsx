@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-
+import { FaStar } from "react-icons/fa";
 const ShopByCategory = () => {
     const [selectedIndex, setSelectedIndex] = useState('Science Toys');
     const [catagoryData, setCatagoryData] = useState([]);
@@ -21,7 +21,7 @@ const ShopByCategory = () => {
     return (
         <div className="my-10 px-6 md:px-0">
             <div>
-                <h1 className="text-4xl font-bold">Shop by category</h1>
+                <h1 className="text-4xl font-bold">Explore Our Product</h1>
                 <div className="divider"></div>
             </div>
             <Tabs>
@@ -43,7 +43,7 @@ const ShopByCategory = () => {
                                         <div className="card-body">
                                             <h2 className="card-title"> {catagory.name}</h2>
                                             <p>Price:  ${catagory.price}</p>
-                                            <p>{catagory.rating}</p>
+                                            <p className='flex items-center gap-5'> <FaStar className='text-warning text-xl'></FaStar> <span className='text-xl'>{catagory.rating}</span></p>
                                             <div className="card-actions justify-end">
                                                 <button className="btn btn-warning">View Details</button>
                                             </div>
