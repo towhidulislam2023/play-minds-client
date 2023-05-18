@@ -5,6 +5,7 @@ import Login from "../pages/Login/Login";
 import Registar from "../pages/Registar/Registar";
 import ViewProductDetails from "../pages/ViewProductDetails/ViewProductDetails";
 import PrivateRoute from "./PrivateRoute";
+import Alltoys from "../pages/Alltoys/Alltoys";
 
 const router = createBrowserRouter([
     {
@@ -27,7 +28,11 @@ const router = createBrowserRouter([
                 path:"/viewProductDetails/:id",
                 element: <PrivateRoute><ViewProductDetails></ViewProductDetails></PrivateRoute>,
                 loader: ({params}) => fetch(`https://play-minds-server.vercel.app/viewdetails/${params.id}`)
-            }
+            },
+            {
+                path: "/alltoys",
+                element: <Alltoys></Alltoys>
+            },
            
         ]
     },

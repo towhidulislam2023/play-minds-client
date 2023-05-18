@@ -2,12 +2,28 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const ViewProductDetails = () => {
-    const loaderData=useLoaderData()
+    const loaderData = useLoaderData()
+    const { pictureURL, name, sellerName, sellerEmail, subcategory, price, rating, availableQuantity, description } = loaderData || {}
 
     return (
-        <div>
-            <h1 className="text-5xl text-center">This is View Product details</h1>
-            <img src={loaderData?.pictureURL} alt="" />
+        <div className='my-10'>
+            <h1 className="text-5xl  font-bold">{name}</h1>
+            <p className='my-2 badge badge-warning mt-5 py-1'>{subcategory}</p>
+            <div className="divider"></div>
+            <div className='flex gap-32'>
+                <img className='w-96' src={pictureURL} alt="" />
+                <div className="divider lg:divider-horizontal"></div>
+                <div className='space-y-6'>
+                    <h1 className='text-xl  '>Name: <span className='font-semibold'>{name}</span></h1>
+                    <h1 className='text-xl  '>Price: $<span className='font-semibold'>{price}</span></h1>
+                    <h1 className='text-xl  '>Rating: <span className='font-semibold'>{rating}</span></h1>
+                    <h1 className='text-xl  '>Available Quantity: <span className='font-semibold'>{availableQuantity}</span></h1>
+                    <h1 className='text-xl  '>Seller Name: <span className='font-semibold'>{sellerName}</span></h1>
+                    <h1 className='text-xl  '>Seller Email: <span className='font-semibold'>{sellerEmail}</span></h1>
+                    <h1 className='text-xl  '>Description: <span className='font-semibold'>{description}</span></h1>
+                </div>
+            </div>
+
         </div>
     );
 };
