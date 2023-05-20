@@ -5,18 +5,24 @@ import Swal from 'sweetalert2';
 import useTitle from '../../hooks/useTitle';
 
 const MyToys = () => {
+
     useTitle("My-toys")
     const { user } = useContext(AuthProviderContext)
     const [mytoys, setMytoys] = useState([])
+    const [sortValue, setSortValue] = useState("ascending")
 
     useEffect(() => {
         if (!user) {
             return
         }
-        fetch(`https://play-minds-server.vercel.app/myAddedtoys?email=${user?.email}`)
+        fetch(`https://play-minds-server.vercel.app/myAddedtoys?email=${user?.email}&sort=${sortValue}`)
             .then(res => res.json())
             .then(data => setMytoys(data))
-    }, [user])
+    }, [user, sortValue])
+    const handelOnChange = (event) => {
+        setSortValue(event.target.value);
+
+    }
     const handelDelete = (id) => {
         console.log(id);
         Swal.fire({
@@ -58,6 +64,19 @@ const MyToys = () => {
         <div className='my-10'>
             <h1 className="text-2xl font-extrabold ">My Added Toys</h1>
             <div className="divider"></div>
+
+
+            <div className="form-control w-full  max-w-xs mx-auto ">
+                <label className="label">
+                    <span className="label-text text-xl">Sory Product By Price</span>
+                </label>
+                <select onChange={handelOnChange} className="select select-bordered ">
+                    <option defaultValue={"ascending"}>Lower Price To Upper Price</option>
+                    <option value={"descending"}>Upper Price to Lower Price</option>
+                </select>
+            </div>
+
+
             <div className="overflow-x-auto w-full my-10">
                 <table className="table w-full my-10 table-normal">
                     {/* head */}

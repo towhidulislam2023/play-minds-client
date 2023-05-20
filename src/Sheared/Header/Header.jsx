@@ -56,7 +56,10 @@ const Header = () => {
 
                     </ul>
                 </div>
-                <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0" />
+                <Link to={"/"}>
+                    <img className='w-24 mr-5' src="https://i.ibb.co/cDBkm6J/playminds-removebg-preview.png" alt="playminds-removebg-preview" border="0" />
+                </Link>
+               
                 <Link to={"/"} className=" hidden md:inline-block text-3xl font-bold text-black">Playminds</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
