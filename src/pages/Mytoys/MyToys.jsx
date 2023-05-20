@@ -69,10 +69,12 @@ const MyToys = () => {
                                 </label>
 
                             </th>
-                            <th>Toy Name and Info <br />Sub-category</th>
+                            <th className='w-[50%]'>Toy Name and Info <br />Sub-category</th>
                             <th>Seller Information</th>
                             <th>Price</th>
-                            <th>Available Quantity</th>
+                            <th>Rating</th>
+                            <th className='text-center'>Available Quantity</th>
+                            <th>Description</th>
                             <th>Acton</th>
                         </tr>
                     </thead>
@@ -95,8 +97,8 @@ const MyToys = () => {
                                                 <img src={data.pictureURL} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">{data.name}</div>
+                                        <div className=''>
+                                            <div className="font-bold w-[50%]">{data.name}</div>
                                             <div className="text-sm opacity-50">{data.subcategory}</div>
                                         </div>
                                     </div>
@@ -105,8 +107,10 @@ const MyToys = () => {
                                     <h2 className='text-xl'>{data.sellerName}</h2>
                                     <div>{data.sellerEmail}</div>
                                 </td>
-                                <td>{data.price}</td>
-                                <td>{data.availableQuantity}</td>
+                                <td className='text-center'>{data.price}</td>
+                                <td className='text-center'>{data.rating}</td>
+                                <td className='text-center'>{data.availableQuantity}</td>
+                                <td>{data.description?.slice(0, 10)}...</td>
                                 <th>
                                     <Link to={`/updatetoys/${data._id}`}> <button className="btn btn-warning">Update</button></Link>
                                 </th>

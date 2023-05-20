@@ -52,13 +52,12 @@ const Alltoys = () => {
                                     <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
-                            <th>Toy Name and Info <br />Sub-category</th>
-                            <th>Seller Information</th>
-                            <th>Price</th>
-                            <th>rating</th>
-                            <th>Available Quantity</th>
-                            <th>Description</th>
-                            <th>Acton</th>
+                            <th className='text-center'>Toy Name and Info <br />Sub-category</th>
+                            <th className='text-center'>Seller Information</th>
+                            <th className='text-center'>Price</th>
+                          <th className='text-center'>Available Quantity</th>
+     
+                            <th className='text-center'>Acton</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -71,7 +70,7 @@ const Alltoys = () => {
                                     </label>
                                 </th>
                                 <td>
-                                    <div className="flex items-center space-x-3">
+                                    <div className="flex items-center space-x-3 ">
                                         <div>
                                             <div className="font-bold">{data.name}</div>
                                             <div className="text-sm opacity-50">{data.subcategory}</div>
@@ -83,11 +82,11 @@ const Alltoys = () => {
                                     <div>{data.sellerEmail}</div>
                                 </td>
                                 <td className='text-center'>{data.price}</td>
-                                <td className='text-center'>{data.rating}</td>
+                               
                                 <td className='text-center'>{data.availableQuantity}</td>
-                                <td>{data.description?.slice(0,10)}...</td>
+                                
 
-                                <th>
+                                <th className='text-center'>
                                     <Link to={`/viewProductDetails/${data._id}`}> <button className="btn btn-warning">View Details</button></Link>
                                 </th>
                             </tr>)
