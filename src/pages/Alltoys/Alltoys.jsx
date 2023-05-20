@@ -12,7 +12,7 @@ const Alltoys = () => {
             .then(res => res.json())
             .then(data => setToysData(data))
     }, [sortValue, searchvalue])
-    // console.log(toysData);
+    console.log(toysData);
 
     const handelOnChange = (event) => {
         setSortValue(event.target.value);
@@ -55,11 +55,13 @@ const Alltoys = () => {
                             <th>Toy Name and Info <br />Sub-category</th>
                             <th>Seller Information</th>
                             <th>Price</th>
+                            <th>rating</th>
                             <th>Available Quantity</th>
+                            <th>Description</th>
                             <th>Acton</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         {/* row 1 */}
                         {
                             toysData && toysData.map(data => <tr key={data._id}>
@@ -80,8 +82,11 @@ const Alltoys = () => {
                                     <h2 className='text-xl'>{data.sellerName}</h2>
                                     <div>{data.sellerEmail}</div>
                                 </td>
-                                <td>{data.price}</td>
-                                <td>{data.availableQuantity}</td>
+                                <td className='text-center'>{data.price}</td>
+                                <td className='text-center'>{data.rating}</td>
+                                <td className='text-center'>{data.availableQuantity}</td>
+                                <td>{data.description?.slice(0,10)}...</td>
+
                                 <th>
                                     <Link to={`/viewProductDetails/${data._id}`}> <button className="btn btn-warning">View Details</button></Link>
                                 </th>
